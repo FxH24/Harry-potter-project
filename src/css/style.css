@@ -1,0 +1,11 @@
+body{
+  font-family: 'Fredoka', sans-serif;
+  background-color: black;
+  color: #ffffff;
+}
+
+header{
+  text-align: center;
+  padding: 2rem;
+  border-bottom: 1px solid #d4af37; 
+}
