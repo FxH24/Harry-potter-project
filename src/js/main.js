@@ -8,12 +8,14 @@ let allCharacters=[];
 //selecteren van zoekbalk+ filter
 const searchInput = document.querySelector("#searchInput");
 const houseFilter= document.querySelector("#houseFilter");
+const sortFilter= document.querySelector("#sortFilter");
 
 
 
-const applyFilters =() =>{
+const applyFilters =() => {
   const searchTerm = searchInput.value.toLowerCase();
   const selectedHouse = houseFilter.value;
+  const selectedSort=sortFilter.value;
   
   const filtered = allCharacters.filter((character) => {
     const name =character.name.toLowerCase();
@@ -21,11 +23,17 @@ const applyFilters =() =>{
     const matchesHouse = selectedHouse =="all" ? true:character.house == selectedHouse;
     return matchesSearch && matchesHouse;
   });
+  if (selectedSort=="a-z"){
+    filtered.sort((a,b)=>a.name.localeCompare(b.name))
+  }else if(selectedSort=="z-a"){
+    filtered.sort((a,b) => b.name.localeCompare(a.name));
+  }
   renderCharacters(filtered);
 }
 
 searchInput.addEventListener("input", applyFilters);
 houseFilter.addEventListener("change", applyFilters);
+sortFilter.addEventListener("change",applyFilters);
 
 
 
