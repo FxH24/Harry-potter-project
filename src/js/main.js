@@ -14,7 +14,7 @@ const handleSearch =() =>{
   const searchTerm = searchInput.value.toLowerCase();
   
   const filtered = allCharacters.filter((character) => {
-    const name =character.attributes.name.toLowerCase();
+    const name =character.name.toLowerCase();
     return name.includes (searchTerm);
   });
   renderCharacters(filtered);
