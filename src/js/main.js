@@ -1,6 +1,30 @@
-const API_URL= "https://api.potterdb.com/v1/characters?page%5Bsize%5D=100";
+const API_URL = "https://hp-api.onrender.com/api/characters"
 // selecteren van DOM element
 const charactersContainer= document.querySelector("#characters");
+
+// bewaen van characters om te filteren
+let allCharacters=[];
+
+//selecteren van zoekbalk
+const searchInput = document.querySelector("#searchInput");
+
+
+
+const handleSearch =() =>{
+  const searchTerm = searchInput.value.toLowerCase();
+  
+  const filtered = allCharacters.filter((character) => {
+    const name =character.attributes.name.toLowerCase();
+    return name.includes (searchTerm);
+  });
+  renderCharacters(filtered);
+}
+
+searchInput.addEventListener("input", handleSearch);
+
+
+
+
 
 // maken van een card
 
@@ -10,13 +34,13 @@ const createCard=(character) =>{
   card.classList.add("card");
   //html toevoegen via template literal
    card.innerHTML = ` 
-    <img class="card-image" src="${attributes.image ? attributes.image : ''}" alt="${attributes.name}" />
-    <h2 class="card-name">${attributes.name}</h2>
-    <p class="card-info"><strong>House:</strong> ${attributes.house ? attributes.house : "Unknown"}</p>
-    <p class="card-info"><strong>Species:</strong> ${attributes.species ? attributes.species : "Unknown"}</p>
-    <p class="card-info"><strong>Blood:</strong> ${attributes.blood_status ? attributes.blood_status : "Unknown"}</p>
-    <p class="card-info"><strong>Gender:</strong> ${attributes.gender ? attributes.gender : "Unknown"}</p>
-    <p class="card-info"><strong>Patronus:</strong> ${attributes.patronus ? attributes.patronus : "Unknown"}</p>
+    <img class="card-image" src="${character.image ? character.image : ''}" alt="${character.name}" />
+    <h2 class="card-name">${character.name}</h2>
+    <p class="card-info"><strong>House:</strong> ${character.house ? character.house : "Unknown"}</p>
+    <p class="card-info"><strong>Species:</strong> ${character.species ? character.species : "Unknown"}</p>
+    <p class="card-info"><strong>Ancestry:</strong> ${character.ancestry ? character.ancestry : "Unknown"}</p>
+    <p class="card-info"><strong>Gender:</strong> ${character.gender ? character.gender : "Unknown"}</p>
+    <p class="card-info"><strong>Patronus:</strong> ${character.patronus ? character.patronus : "Unknown"}</p>
   `;
   return card;
 
@@ -29,11 +53,12 @@ const renderCharacters= (characters) => {
 
 
   characters.forEach((character) => {
-  const card=createCard(character);
-  charactersContainer.appendChild(card);
+    const card=createCard(character);
+    charactersContainer.appendChild(card);
   })
 
 };
+
 
 //API fetch data--> zorgen dat data opgehaald kan worden//
 
@@ -45,7 +70,8 @@ const getCharacters= async ()=> {                  //maken van functie met als n
       throw new Error(`HTTP error:${response.status}`);
     }
     const json= await response.json();
-    renderCharacters(json.data);
+    allCharacters=json // bewaar alle characters globaal
+    renderCharacters(json);
   }catch(error){
     console.error("Something went wrong", error.message);
     charactersContainer.innerHTML= `<p class="loading"> Failed to load characters.</p>`;
