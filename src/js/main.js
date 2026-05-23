@@ -5,22 +5,27 @@ const charactersContainer= document.querySelector("#characters");
 // bewaen van characters om te filteren
 let allCharacters=[];
 
-//selecteren van zoekbalk
+//selecteren van zoekbalk+ filter
 const searchInput = document.querySelector("#searchInput");
+const houseFilter= document.querySelector("#houseFilter");
 
 
 
-const handleSearch =() =>{
+const applyFilters =() =>{
   const searchTerm = searchInput.value.toLowerCase();
+  const selectedHouse = houseFilter.value;
   
   const filtered = allCharacters.filter((character) => {
     const name =character.name.toLowerCase();
-    return name.includes (searchTerm);
+    const matchesSearch = name.includes(searchTerm)
+    const matchesHouse = selectedHouse =="all" ? true:character.house == selectedHouse;
+    return matchesSearch && matchesHouse;
   });
   renderCharacters(filtered);
 }
 
-searchInput.addEventListener("input", handleSearch);
+searchInput.addEventListener("input", applyFilters);
+houseFilter.addEventListener("change", applyFilters);
 
 
 
