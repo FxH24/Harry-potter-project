@@ -92,7 +92,7 @@ header{
 #searchInput::placeholder{
   color: rgba(255, 255, 255, 0.4);
 }
-#houseFilter{
+#houseFilter,#alphabeticFilter{
   padding: 0.75 rem 1 rem;
   background-color:#1a1830 ;
   border: 1px solid rgba(212, 175,55, 0.3);
@@ -102,7 +102,7 @@ header{
   font-size: 1rem;
   cursor: pointer;
 }
-#houseFilter:focus{
+#houseFilter:focus,#alphabeticFilter:focus{
   outline: none;
   border-color: #d4af37;
 }
