@@ -54,14 +54,15 @@ const createCard=(character) =>{
     <p class="card-info"><strong>Ancestry:</strong> ${character.ancestry ? character.ancestry : "Unknown"}</p>
     <p class="card-info"><strong>Gender:</strong> ${character.gender ? character.gender : "Unknown"}</p>
     <p class="card-info"><strong>Patronus:</strong> ${character.patronus ? character.patronus : "Unknown"}</p>
-    <button class="details-button"> Show details </button>
+   
       
     <div class="cardDetails hide-me">
     <p class="card-info"><strong>Date of Birth:</strong> ${character.dateOfBirth ? character.dateOfBirth : "Unknown"}</p>
     <p class="card-info"><strong>Eye Colour:</strong> ${character.eyeColour ? character.eyeColour : "Unknown"}</p>
     <p class="card-info"><strong>Hair Colour:</strong> ${character.hairColour ? character.hairColour : "Unknown"}</p>
     <p class="card-info"><strong>Actor:</strong> ${character.actor ? character.actor : "Unknown"}</p>    
-    </div>
+    </div> 
+    <button class="details-button"> Show details </button>
     `;
   const detailsButton=card.querySelector(".details-button");
   const details= card.querySelector(".cardDetails")
