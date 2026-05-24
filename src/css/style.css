@@ -10,10 +10,10 @@ header{
   border-bottom: 1px solid #d4af37; 
 }
 
-.characters-grid{
+.characters-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill,minmax (220px,1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
   padding: 1rem 0;
 }
 
@@ -26,8 +26,8 @@ header{
 .card{
   background-color: #1a1830;
   border: 1px solid rgba(212,175,55,0.2);
-  border-radius: 15px;
-  padding: 1rem;
+  border-radius: 12px;
+  padding: 0.75rem;
   transition: transform 0.2s, border-color 0.2s;
   cursor: pointer;
 }
@@ -49,15 +49,15 @@ header{
 
 .card-name{
   color: #d4af37;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
 }
 
 .card-info {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: #cccccc;
-  margin: bottom 0.3rem; 
+  margin-bottom :0.3rem; 
   
 }
 
@@ -84,7 +84,7 @@ header{
   font-size: 1rem;
 }
 
-.searchInput:focus{
+#searchInput:focus{
   outline: none;
   border-color: #d4af37;
 }
@@ -93,7 +93,7 @@ header{
   color: rgba(255, 255, 255, 0.4);
 }
 #houseFilter,#sortFilter{
-  padding: 0.75 rem 1 rem;
+  padding: 0.75rem 1rem;
   background-color:#1a1830 ;
   border: 1px solid rgba(212, 175,55, 0.3);
   border-radius: 8px;
@@ -117,29 +117,29 @@ header{
 .details-button{
   width: 100%;
   margin-top: 0.5rem;
-  padding: 0.5rem;
+  padding: 0.4rem;
   background-color: transparent;
   border: 1px solid #d4af37;
   border-radius: 8px;
   color: #d4af37;
   font-family: 'Fredoka',sans-serif;
   cursor: pointer;
-  transition: background-color 0.2s color 0.2s;
+  transition: background-color 0.2s, color 0.2s;
 }
 .details-button:hover{
   background-color: #d4af37;
   color: #0f0e1a;
 }
 .favorite-button {
-  width: 7%;
+  width: 15%;
   margin-bottom: 0.5rem;
-  padding: 0.4rem;
+  padding: 0.35rem;
   background-color: transparent;
   border: 1px solid rgba(212, 175, 55, 0.5);
   border-radius: 8px;
   color: #d4af37;
   font-family: 'Fredoka', sans-serif;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   cursor: pointer;
   transition: background-color 0.2s;
 }
@@ -235,3 +235,52 @@ header{
   margin-top: 0.75rem;
   min-height: 1.2rem;
 }
+
+/* === RESPONSIVE DESIGN === */
+
+/* Mobiel (max 480px) → 1 kolom */
+@media screen and (max-width: 480px) {
+  .characters-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  .searchbar {
+    flex-direction: column;
+  }
+  #wizardForm {
+    flex-direction: column;
+  }
+  h1 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Tablet (481px - 768px) → 2 kolommen */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .characters-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  .searchbar {
+    flex-direction: column;
+  }
+  #wizardForm {
+    flex-direction: column;
+  }
+}
+
+/* Grote desktop (vanaf 1200px) → 4 kolommen */
+@media screen and (min-width: 1200px) {
+  .characters-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Extra groot scherm (vanaf 1600px) → 5 kolommen */
+@media screen and (min-width: 1600px) {
+  .characters-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+
