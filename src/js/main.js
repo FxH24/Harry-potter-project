@@ -8,7 +8,7 @@ let favorites=[];
 
 const loadFavorites =() =>{
   const saved=localStorage.getItem("favorites");
-  favorites =stored ? JSON.parse(saved): [];
+  favorites =saved ? JSON.parse(saved): [];
 };
 
 const saveFavorites = ()=>{
@@ -140,7 +140,8 @@ const getCharacters= async ()=> {                  //maken van functie met als n
       throw new Error(`HTTP error:${response.status}`);
     }
     const json= await response.json();
-    allCharacters=json // bewaar alle characters globaal
+    allCharacters=json// bewaar alle characters globaal
+    loadFavorites(); // favorieten ophalen
     renderCharacters(json);
   }catch(error){
     console.error("Something went wrong", error.message);
