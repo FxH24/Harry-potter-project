@@ -2,8 +2,21 @@ const API_URL = "https://hp-api.onrender.com/api/characters"
 // selecteren van DOM element
 const charactersContainer= document.querySelector("#characters");
 
-// bewaen van characters om te filteren
+
 let allCharacters=[];
+let favorites=[];
+
+const loadFavorites =() =>{
+  const saved=localStorage.getItem("favorites");
+  favorites =stored ? JSON.parse(saved): [];
+};
+
+const saveFavorites = ()=>{
+  localStorage.setItem("favorites", JSON.stringify(favorites));
+};
+
+
+
 
 //selecteren van zoekbalk+ filter
 const searchInput = document.querySelector("#searchInput");
