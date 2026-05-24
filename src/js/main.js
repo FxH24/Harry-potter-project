@@ -52,6 +52,12 @@ const applyFilters =() => {
 searchInput.addEventListener("input", applyFilters);
 houseFilter.addEventListener("change", applyFilters);
 sortFilter.addEventListener("change",applyFilters);
+favoritesToggle.addEventListener("click",() => {
+  showFavoritesOnly=!showFavoritesOnly;
+  favoritesToggle.textContent= showFavoritesOnly ? "Show all":"Show favorites only";
+  favoritesToggle.classList.toggle ("activek", showFavoritesOnly);
+  applyFilters();
+});
 
 
 
