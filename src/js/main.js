@@ -1,38 +1,27 @@
 const API_URL = "https://hp-api.onrender.com/api/characters"
-// selecteren van DOM element
-const charactersContainer= document.querySelector("#characters");
-
 
 let allCharacters=[];
 let favorites=[];
 let showFavoritesOnly = false;
 
-
+const charactersContainer= document.querySelector("#characters");
 const loadFavorites =() =>{
   const saved=localStorage.getItem("favorites");
   favorites =saved ? JSON.parse(saved): [];
 };
-
 const saveFavorites = ()=>{
   localStorage.setItem("favorites", JSON.stringify(favorites));
 };
-
-
-
-
 const searchInput = document.querySelector("#searchInput");
 const houseFilter= document.querySelector("#houseFilter");
 const sortFilter= document.querySelector("#sortFilter");
 const favoritesToggle = document.querySelector("#favoritesToggle");
+
 const wizardForm = document.querySelector("#wizardForm");
 const wizardName = document.querySelector("#wizardName");
 const wizardHouse = document.querySelector("#wizardHouse");
 const wizardPatronus = document.querySelector("#wizardPatronus");
 const formError = document.querySelector("#formError");
-
-
-
-
 
 const applyFilters =() => {
   const searchTerm = searchInput.value.toLowerCase();
