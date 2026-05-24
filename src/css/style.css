@@ -106,4 +106,28 @@ header{
   outline: none;
   border-color: #d4af37;
 }
+.hide-me{
+  display: none;
+}
+.card-details{
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(212, 175,55, 0.3);
+}
+.details-button{
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  background-color: transparent;
+  border: 1px solid #d4af37;
+  border-radius: 8px;
+  color: #d4af37;
+  font-family: 'Fredoka',sans-serif;
+  cursor: pointer;
+  transition: background-color 0.2s color 0.2s;
+}
+.details-button:hover{
+  background-color: #d4af37;
+  color: #0f0e1a;
+}
 
