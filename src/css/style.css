@@ -130,4 +130,47 @@ header{
   background-color: #d4af37;
   color: #0f0e1a;
 }
+.favorite-button {
+  width: 7%;
+  margin-bottom: 0.5rem;
+  padding: 0.4rem;
+  background-color: transparent;
+  border: 1px solid rgba(212, 175, 55, 0.5);
+  border-radius: 8px;
+  color: #d4af37;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
 
+.favorite-button:hover {
+  background-color: rgba(212, 175, 55, 0.15);
+}
+
+.favorite-button.is-favorite {
+  background-color: #d4af37;
+  color: #0f0e1a;
+  font-weight: 700;
+}
+#favoritesToggle {
+  padding: 0.75rem 1rem;
+  background-color: #1a1830;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 8px;
+  color: #d4af37;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+#favoritesToggle:hover {
+  background-color: rgba(212, 175, 55, 0.3);
+}
+
+#favoritesToggle.active {
+  background-color: #d4af37;
+  color: #0f0e1a;
+  
+}
