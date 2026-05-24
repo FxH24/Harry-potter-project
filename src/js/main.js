@@ -225,3 +225,4 @@ const getCharacters= async ()=> {                  //maken van functie met als n
 
 };
 getCharacters(); // roept de functie op
+
