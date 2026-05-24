@@ -62,6 +62,7 @@ const createCard=(character) =>{
    card.innerHTML = ` 
     <img class="card-image" src="${character.image ? character.image : ''}" alt="${character.name}" />
     <h2 class="card-name">${character.name}</h2>
+
     <button class="favorite-button"> Favorite </button>
 
     <p class="card-info"><strong>House:</strong> ${character.house ? character.house : "Unknown"}</p>
@@ -87,7 +88,31 @@ const createCard=(character) =>{
     const isHidden= details.classList.contains("hide-me");
     detailsButton.textContent= isHidden? "show details" :"Hide details";
   })
+  const favoriteButton= card.querySelector(".favorite-button");
+
+  favoriteButton.addEventListener("click", ()=>{
+    const isFavorite= favorites.includes(character.name);
+
+    if (isFavorite){
+      favorites= favorites.filter((name) => name != character.name);
+    }else {
+      favorites.push (character.name);
+    }
+
+    saveFavorites();
+    updateFavoriteButton(favoriteButton, character.name);
+  });
+
+  updateFavoriteButton(favoriteButton, character.name);
   return card;
+
+
+}
+const updateFavoriteButton= (button, characterName) =>{
+  const isFavorite = favorites.includes(characterName);
+  button.textContent = isFavorite ? "★" :"☆";
+  button.classList.toggle("is-favorite", isFavorite);
+
 
 }
 
