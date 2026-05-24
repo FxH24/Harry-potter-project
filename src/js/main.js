@@ -24,6 +24,11 @@ const searchInput = document.querySelector("#searchInput");
 const houseFilter= document.querySelector("#houseFilter");
 const sortFilter= document.querySelector("#sortFilter");
 const favoritesToggle = document.querySelector("#favoritesToggle");
+const wizardForm = document.querySelector("#wizardForm");
+const wizardName = document.querySelector("#wizardName");
+const wizardHouse = document.querySelector("#wizardHouse");
+const wizardPatronus = document.querySelector("#wizardPatronus");
+const formError = document.querySelector("#formError");
 
 
 
@@ -194,13 +199,11 @@ const observeImages=()=>{
 const renderCharacters= (characters) => {
   charactersContainer.innerHTML=""; // verwijderd de loading bericht
 
-
   characters.forEach((character) => {
     const card=createCard(character);
     charactersContainer.appendChild(card);
   });
   observeImages();
-
 };
 
 
