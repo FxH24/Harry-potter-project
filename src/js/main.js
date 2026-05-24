@@ -62,6 +62,8 @@ const createCard=(character) =>{
    card.innerHTML = ` 
     <img class="card-image" src="${character.image ? character.image : ''}" alt="${character.name}" />
     <h2 class="card-name">${character.name}</h2>
+    <button class="favorite-button"> Favorite </button>
+
     <p class="card-info"><strong>House:</strong> ${character.house ? character.house : "Unknown"}</p>
     <p class="card-info"><strong>Species:</strong> ${character.species ? character.species : "Unknown"}</p>
     <p class="card-info"><strong>Ancestry:</strong> ${character.ancestry ? character.ancestry : "Unknown"}</p>
