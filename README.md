@@ -19,6 +19,7 @@ Gebruikte API's:
 HP-API — https://hp-api.onrender.com/
 Gebruikt endpoint: `https://hp-api.onrender.com/api/characters`
 
+Implementatie van elke technisch vereiste:
 
 DOM-manipulatie
 - Elementen selecteren: `document.querySelector` — regel 7
