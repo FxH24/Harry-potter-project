@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Harry-potter Character Explorer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet"> 
+  <script type="module" crossorigin src="/assets/index-DOalahCj.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-DlLKY2PC.css">
+</head>
+<body>
+  <header>
+    <h1>Hogwarts Character Explorer</h1>
+  </header>
+  <main>
+    <section class="searchbar">
+      <input type="text" id="searchInput" placeholder="Search by name"/>
+      <select id="houseFilter">
+        <option value="all"> All houses</option>
+        <option value="Gryffindor">Gryffindor</option>
+        <option value="Slytherin">Slytherin</option>
+        <option value="Hufflepuff">Hufflepuff</option>
+        <option value="Ravenclaw">Ravenclaw</option>
+      </select>
+      <select id="sortFilter">
+        <option value="default">Sort: Default</option>
+        <option value="a-z">Name: A-Z</option>
+        <option value="z-a">Name:Z-A</option>
+      </select>
+      <button id="favoritesToggle">Show favorites only</button>
+    </section>
+    <section class="form-section">
+      <h2 class="form-title">Create your own wizard</h2>
+      <form id="wizardForm">
+        <input type="text" id="wizardName" placeholder="Wizard name" />
+        <select id="wizardHouse">
+          <option value="">Choose a house</option>
+          <option value="Gryffindor">Gryffindor</option>
+          <option value="Slytherin">Slytherin</option>
+          <option value="Hufflepuff">Hufflepuff</option>
+          <option value="Ravenclaw">Ravenclaw</option>
+        </select>
+        <input type="text" id="wizardPatronus" placeholder="Patronus" />
+        <button type="submit">Add wizard</button>
+      </form>
+      <p id="formError" class="form-error"></p>
+    </section>
+
+    <section id="characters" class="characters-grid">
+      <p class="loading">Characters loading</p> 
+    </section>
+  
+  </main>
+
+  
+  
+  
+
+</body>
+</html>
