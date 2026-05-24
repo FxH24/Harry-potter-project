@@ -42,7 +42,7 @@ sortFilter.addEventListener("change",applyFilters);
 // maken van een card
 
 const createCard=(character) =>{
-  const attributes = character.attributes;
+  
   const card=document.createElement("article");
   card.classList.add("card");
   //html toevoegen via template literal
@@ -54,7 +54,23 @@ const createCard=(character) =>{
     <p class="card-info"><strong>Ancestry:</strong> ${character.ancestry ? character.ancestry : "Unknown"}</p>
     <p class="card-info"><strong>Gender:</strong> ${character.gender ? character.gender : "Unknown"}</p>
     <p class="card-info"><strong>Patronus:</strong> ${character.patronus ? character.patronus : "Unknown"}</p>
-  `;
+    <button class="details-button"> Show details </button>
+      
+    <div class="cardDetails hide-me">
+    <p class="card-info"><strong>Date of Birth:</strong> ${character.dateOfBirth ? character.dateOfBirth : "Unknown"}</p>
+    <p class="card-info"><strong>Eye Colour:</strong> ${character.eyeColour ? character.eyeColour : "Unknown"}</p>
+    <p class="card-info"><strong>Hair Colour:</strong> ${character.hairColour ? character.hairColour : "Unknown"}</p>
+    <p class="card-info"><strong>Actor:</strong> ${character.actor ? character.actor : "Unknown"}</p>    
+    </div>
+    `;
+  const detailsButton=card.querySelector(".details-button");
+  const details= card.querySelector(".cardDetails")
+  
+  detailsButton.addEventListener("click",()=> {
+    details.classList.toggle("hide-me");
+    const isHidden= details.classList.contains("hide-me");
+    detailsButton.textContent= isHidden? "show details" :"Hide details";
+  })
   return card;
 
 }
