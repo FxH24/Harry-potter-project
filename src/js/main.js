@@ -55,7 +55,7 @@ sortFilter.addEventListener("change",applyFilters);
 favoritesToggle.addEventListener("click",() => {
   showFavoritesOnly=!showFavoritesOnly;
   favoritesToggle.textContent= showFavoritesOnly ? "Show all":"Show favorites only";
-  favoritesToggle.classList.toggle ("activek", showFavoritesOnly);
+  favoritesToggle.classList.toggle ("active", showFavoritesOnly);
   applyFilters();
 });
 
@@ -71,7 +71,7 @@ const createCard=(character) =>{
   card.classList.add("card");
   //html toevoegen via template literal
    card.innerHTML = ` 
-    <img class="card-image" src="${character.image ? character.image : ''}" alt="${character.name}" />
+    <img class="card-image lazy" data-src="${character.image ? character.image : ''}" alt="${character.name}" />
     <h2 class="card-name">${character.name}</h2>
 
     <button class="favorite-button"> Favorite </button>
@@ -124,6 +124,23 @@ const updateFavoriteButton= (button, characterName) =>{
   button.textContent = isFavorite ? "★" :"☆";
   button.classList.toggle("is-favorite", isFavorite);
 }
+const observeImages=()=>{
+  const lazyImages= document.querySelectorAll("img.lazy");
+
+  const imageObserver= new IntersectionObserver((entries,observer) => {
+    entries.forEach ((entry)=>{
+      if(entry.isIntersecting){
+        const img =entry.target;
+        img.src=img.dataset.src;
+        img.classList.remove("lazy");
+        observer.unobserve(img);
+      }
+    });
+  });
+  lazyImages.forEach((img) => {
+    imageObserver.observe(img);
+  });
+};
 
 // renderen van alle Cards
 
@@ -134,7 +151,8 @@ const renderCharacters= (characters) => {
   characters.forEach((character) => {
     const card=createCard(character);
     charactersContainer.appendChild(card);
-  })
+  });
+  observeImages();
 
 };
 
