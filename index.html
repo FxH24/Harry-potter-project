@@ -30,6 +30,22 @@
       </select>
       <button id="favoritesToggle">Show favorites only</button>
     </section>
+    <section class="form-section">
+      <h2 class="form-title">Create your own wizard</h2>
+      <form id="wizardForm">
+        <input type="text" id="wizardName" placeholder="Wizard name" />
+        <select id="wizardHouse">
+          <option value="">Choose a house</option>
+          <option value="Gryffindor">Gryffindor</option>
+          <option value="Slytherin">Slytherin</option>
+          <option value="Hufflepuff">Hufflepuff</option>
+          <option value="Ravenclaw">Ravenclaw</option>
+        </select>
+        <input type="text" id="wizardPatronus" placeholder="Patronus" />
+        <button type="submit">Add wizard</button>
+      </form>
+      <p id="formError" class="form-error"></p>
+    </section>
 
     <section id="characters" class="chracter-grid">
       <p class="loading">Characters loading</p> 
