@@ -68,7 +68,8 @@ header{
 .searchbar{
   display: flex;
   gap: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
   flex-wrap: wrap;
 }
 
