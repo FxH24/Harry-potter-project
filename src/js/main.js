@@ -59,7 +59,54 @@ favoritesToggle.addEventListener("click",() => {
   applyFilters();
 });
 
+wizardForm.addEventListener("submit", (event) => {
+  event.preventDefault(); 
 
+  const name = wizardName.value.trim();
+  const house = wizardHouse.value;
+  const patronus = wizardPatronus.value.trim();
+
+  
+  if (name == "") {
+    formError.textContent = "Please enter a wizard name.";
+    return;
+  }
+
+  if (name.length < 2) {
+    formError.textContent = "Name must be at least 2 characters.";
+    return;
+  }
+
+  if (house == "") {
+    formError.textContent = "Please choose a house.";
+    return;
+  }
+
+  if (patronus == "") {
+    formError.textContent = "Please enter a patronus.";
+    return;
+  }
+
+  const newWizard = {
+    name: name,
+    house: house,
+    patronus: patronus,
+    species: "human",
+    ancestry: "Unknown",
+    gender: "Unknown",
+    image: "",
+    dateOfBirth: "Unknown",
+    eyeColour: "Unknown",
+    hairColour: "Unknown",
+    actor: "You!",
+  };
+
+  
+  allCharacters.push(newWizard);
+  formError.textContent = ""; 
+  wizardForm.reset(); 
+  applyFilters(); 
+});
 
 
 
@@ -70,7 +117,7 @@ const createCard=(character) =>{
   const card=document.createElement("article");
   card.classList.add("card");
   //html toevoegen via template literal
-   card.innerHTML = ` 
+   card.innerHTML = `
     <img class="card-image lazy" data-src="${character.image ? character.image : ''}" alt="${character.name}" />
     <h2 class="card-name">${character.name}</h2>
 
