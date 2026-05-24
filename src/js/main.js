@@ -5,6 +5,8 @@ const charactersContainer= document.querySelector("#characters");
 
 let allCharacters=[];
 let favorites=[];
+let showFavoritesOnly = false;
+
 
 const loadFavorites =() =>{
   const saved=localStorage.getItem("favorites");
@@ -18,10 +20,12 @@ const saveFavorites = ()=>{
 
 
 
-//selecteren van zoekbalk+ filter
 const searchInput = document.querySelector("#searchInput");
 const houseFilter= document.querySelector("#houseFilter");
 const sortFilter= document.querySelector("#sortFilter");
+const favoritesToggle = document.querySelector("#favoritesToggle");
+
+
 
 
 
@@ -34,7 +38,8 @@ const applyFilters =() => {
     const name =character.name.toLowerCase();
     const matchesSearch = name.includes(searchTerm)
     const matchesHouse = selectedHouse =="all" ? true:character.house == selectedHouse;
-    return matchesSearch && matchesHouse;
+    const matchesFavorites = showFavoritesOnly ? favorites.includes(character.name) : true;
+    return matchesSearch && matchesHouse && matchesFavorites;
   });
   if (selectedSort=="a-z"){
     filtered.sort((a,b)=>a.name.localeCompare(b.name))
@@ -112,8 +117,6 @@ const updateFavoriteButton= (button, characterName) =>{
   const isFavorite = favorites.includes(characterName);
   button.textContent = isFavorite ? "★" :"☆";
   button.classList.toggle("is-favorite", isFavorite);
-
-
 }
 
 // renderen van alle Cards
